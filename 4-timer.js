@@ -23,7 +23,11 @@ const words = [
 
 
 function checkWord(num, measurement) {
-    if (num % 10 === 1) {
+    if (num >= 5 && num <= 20) {
+        return words.find(el => el.name === measurement).value[2]
+    } else if(num < 5 && num > 1) {
+        return words.find(el => el.name === measurement).value[1]
+    } else if (num % 10 === 1) {
         return words.find(el => el.name === measurement).value[0]
     } else if (num % 10 > 1 && num % 10 < 5){
         return words.find(el => el.name === measurement).value[1]
@@ -50,6 +54,7 @@ function timeToYearEnd() {
         for (let [key, value] of Object.entries(timerObj)) {
             page[`${key}`].innerText = value;
             page[`${key}Text`].innerText = checkWord(value,`${key}`);
+            console.log(checkWord(value,`${key}`));
         }
     }, 1000);
 
