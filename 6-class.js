@@ -16,7 +16,7 @@ class Car {
     }
 
     set changeMileage(newMileage) {
-        if (newMileage < this.mileage) {
+        if (newMileage < this.#mileage) {
             return;
         }
         this.#mileage = newMileage;
