@@ -32,7 +32,10 @@ const geoLocationPromise = new Promise((resolve, reject) => {
 })
 
 geoLocationPromise
-    .then(position => showCoordinates(position.coords.latitude, position.coords.longitude))
+    .then(position => {
+        const {coords} = position;
+        showCoordinates(coords.latitude, coords.longitude)
+    })
     .catch(error => {
         showError(error.message);
     })
