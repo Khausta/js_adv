@@ -12,14 +12,14 @@ async function getProductError(id) {
 
 async function race(arr) {
     try {
-        const res = await Promise.race(arr);
-        console.log(await res); 
+        return Promise.race(arr);
     } catch (e) {
         console.error(e);
     }
 }
 
-race([getProduct(2), getProductError(4), getProduct(10)])
+// race([getProductError(2), getProductError(4), getProduct(10)]);
+console.log(race([getProductError(2), getProductError(4), getProduct(10)]))
 
 
 
