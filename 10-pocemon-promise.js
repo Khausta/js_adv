@@ -1,9 +1,7 @@
 'use strict';
 
-function getAbility(url, messageError, method = 'GET') {
-    return fetch(url, {
-        method
-    })
+function getAbility(url, messageError) {
+    return fetch(url)
         .then(response => {
             if(!response.ok) {
                 throw new Error (`${messageError} ${response.status}`)
