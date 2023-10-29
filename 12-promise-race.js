@@ -1,29 +1,31 @@
 'use strict';
 
-async function getProduct(id) {
-    const response = await fetch('https://dummyjson.com/products/' + id);
-    return response;
+async function race(promiseArray) {
+    return new Promise((resolve, reject) => {
+        promiseArray.map(promise => {
+            promise
+                .then(result => resolve(result))
+                .catch((error) => reject(error));
+        })
+    });
 }
 
-async function getProductError(id) {
-    const response = await fetch('https://dummyjson.com/productsS/' + id);
-    return response;
+const fetch1 = new Promise((resolve) => {
+    setTimeout(() => resolve('Status: ok\n value: 100'), 5000);
+});
+
+const fetch2 = new Promise((resolve) => {
+    setTimeout(() => resolve('Status: ok\n value: 200'), 3000);
+});
+
+const fetch3 = new Promise((reject) => {
+    setTimeout(() => reject('Status: failed\n value: 0'), 1000);
+});
+
+async function promiseRace(array) {
+    const result = await race(array);
+    console.log(result);
 }
 
-async function race(arr) {
-    try{
-        const res = await Promise.race(arr);
-        if(!res.ok) {
-            throw new Error(res.status);
-        } 
-        const data  = await res.json();
-        console.log(data);
-    } catch (e) {
-        console.error(e);
-    }
-}
-
-race([getProduct(2), getProduct(4), getProduct(10)]);
-
-
+promiseRace([fetch1, fetch2, fetch3]);
 
