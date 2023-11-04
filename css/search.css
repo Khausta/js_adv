@@ -1,0 +1,11 @@
+.dom-search {
+    max-width: 500px;
+    margin: auto;
+}
+.wrapper-search > div {
+    border: 1px solid gray
+}
+
+.finded {
+    background: rgb(73, 176, 107);
+}
