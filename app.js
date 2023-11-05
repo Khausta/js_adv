@@ -33,14 +33,22 @@
 
 */
 
-import { add, substruct } from './calc.js';
+import { add, substruct, res } from './calc.js';  
 
 // console.log(add(1, 3));
 console.log(substruct(1,3));
 
-setInterval(() => {
-    console.log(add(1, 3));
-}, 1000)
+// async function getProducts() {
+//     const res = await fetch('https://dummyjson.com/products');
+//     return res.json();
+// } 
+
+// console.log(await getProducts());
+console.log(res);
+console.log(1);
+
+
+
 
 
 

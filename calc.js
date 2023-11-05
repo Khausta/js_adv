@@ -17,6 +17,14 @@ setTimeout(() => {
     }
 }, 1500);
 
+async function getProducts() {
+    const res = await fetch('https://dummyjson.com/products');
+    return res.json();
+    // return await res.json(); await не добавляй, можно добавить в случае если хочешь отлавливать ошибки
+} 
+
+export const res = await getProducts();
+
 //в commonJS объявляем экспорт
 
 // console.log('test');
