@@ -1,51 +1,23 @@
 'use strict';
 /*
-    IIFE 
-    модульный файл js подключается перед главным файлом
-    создается глобальный обхект APP и 
-    в него записываем функции (пример в calc.js);
-*/
-// (function (){
-//     const a = 1;
-//     console.log(APP.calc.add(1, 3));
-//     console.log(APP.calc.substruct(1,3));
-// })()
+    устанавливаем в теринале сборщик rollup
+    npm i -g rollup
 
-/*
-    CommonJS
-    -не будет работать в браузере без nodejs 
-    так как нужно сначала собрать bundle
-    -открываем терминал
-    -запуск выполнения кода node app.js
+    на сайте npm возьми команду для терминала
+    rollup main.js --format iife --name "myBundle" --file bundle.js
+    (в моем случае) rollup app.js --format iife --name "myBundle" --file bundle.js
+
+    для компиляции кода для более старых версий браузера используй babel
 */
 
-// const { add, substruct} = require('./calc.js');
-// console.log(add(1, 3));
-// console.log(substruct(1,3));
+import { add, substruct } from './calc.js';  
 
-
-/*
-    ES Modules
-
-    -чтобы импортировать файл нужно ему указать 
-    атрибут type="module" при подключении
-    в index.js (вместо defer or async);
-
-*/
-
-import { add, substruct, res } from './calc.js';  
-
-// console.log(add(1, 3));
+console.log(add(1, 3));
 console.log(substruct(1,3));
 
-// async function getProducts() {
-//     const res = await fetch('https://dummyjson.com/products');
-//     return res.json();
-// } 
+const a = 2;
+console.log(a);
 
-// console.log(await getProducts());
-console.log(res);
-console.log(1);
 
 
 
