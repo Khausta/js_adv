@@ -1,28 +1,23 @@
 'use strict';
 
+function add(f, s) {
+    return f + s;
+}
 
-const APP = {
-    
-};
+function substruct(f, s) {
+    return f - s;
+}
+//в commonJS объявляем экспорт
 
-(function (){
-    const a = 1;
+console.log('test');
+module.exports = { add, substruct };
+console.log('test after export');
 
-    function add(f, s) {
-        return f + s;
-    }
-
-    function substruct(f, s) {
-        return f - s;
-    }
-
-    APP.calc = {
-        add,
-        substruct
-    }
-    
-})()
-
+//вывод 
+// test
+// test after export
+// 4
+// -2
 
 
 
