@@ -5,96 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script src="./app.js"></script>
-    <link rel="stylesheet" href="./css/activity-generator.css">
-    <link rel="stylesheet" href="./css/search.css">
     <!-- <script src="dom-adv-task-search.js" async></script>   сработает если скорость загрузки html не превысит скорости загрузки script -->
-     
-    <script src="dom-adv-task-search.js" defer></script>  
+    <script src="calc.js" defer></script>  
+    <script src="app.js" defer></script>  
+    <link rel="stylesheet" href="./css/style.css">
   </head>
   <body style="background-color: #1c1b21; text-align: center">
     <img src="./logo.svg" alt="" />
-    <section class="selector">
-      <form>
-        <label for="city-select">Ваш город</label>
-        <select name="city" id="category-select">
-          <option value="">-- Выберите город --</option>
-          <!-- <option value="petersburg">Санкт-Петербург</option>
-          <option value="samara">Самара</option>
-          <option value="perm">Пермь</option>
-          <option value="novosibirsk">Новосибирск</option> -->
-        </select>
-      </form>
-    </section>
-    <div class="filter">
-
-    </div>
-    <div class="filter-with-error" style="color: aliceblue;">
-
-    </div>
-    <section class="activity">
-      <button class="bubbly-button" onclick="generate()">Сгенерировать идеи</button>
-      <div class="activity__wrapper">
-      </div>
-    </section>
-      <!-- для упражнения события dom-adv.js-->
-
-      <!-- <div class="wrapper"></div> -->
-      <!-- <button class="button" onclick="generate(event)">Generate</button> -->
-      <!-- <button class="button">Generate</button> -->
-      <!-- <div style="color: white; font-size: 30px;">
-        <div>1</div>
-        <div>2</div>
-        <div>3</div>
-        <div>4</div>
-        <div>5</div>
-        <div>6</div>
-        <div>7</div>
-        <div>8</div>
-        <div>9</div>
-        <div>10</div>
-        <div>11</div>
-        <div>12</div>
-        <div>13</div>
-        <div>14</div>
-        <div>15</div>
-        <div>16</div>
-        <div>17</div>
-        <div>18</div>
-        <div>19</div>
-        <div>20</div>
-        <div class="down">down</div>
-      </div> -->
-      <!-- <div class="test" style="color: white; font-size: 30px;">
-        <p class="paragraph">
-          Нажмите на кнопку
-          <button class="button" style="color: white; font-size: 30px; background-color:aqua; border: none;">Button 2</button>
-        </p>
-      </div>
-      <div class="wrapper" style="flex-direction: column; border: 1px solid white; padding-top: 20px; max-width: 500px; margin: 20px auto;"> -->
-        <!-- <div class="outer" style="padding: 50px;">
-          
-          <div class="inner" style="padding: 50px; border: 1px solid red;">
-            <button class="button3" style="color: white; font-size: 30px; border: none;">Button 2</button>
-          </div>
-        
-        </div> -->
-        <!-- <div class="inner" style="padding: 50px; border: 1px solid red;">
-          <button class="button100">first</button>
-          <button class="button100">second</button>
-          <button class="button100">third</button>
-        </div> -->
-      <!-- </div> -->
-    <!-- для упражнения dom-adv-task-search.js -->
-    <section class="dom-search">
-    </section>  
-
-    <section class="search" style="padding: 30px; border: 1px solid gray; margin-top: 20px;">
-      <input type="text" onchange="search(event)">
-      <div class="wrapper-search" style="flex-direction: column; max-width: 500px; margin: auto; padding: 30px;">
-        
-      </div>
-    </section>
-   
+      
   </body>
 </html>
