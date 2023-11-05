@@ -19,10 +19,30 @@
     -запуск выполнения кода node app.js
 */
 
-const { add, substruct} = require('./calc.js');
+// const { add, substruct} = require('./calc.js');
+// console.log(add(1, 3));
+// console.log(substruct(1,3));
 
-console.log(add(1, 3));
+
+/*
+    ES Modules
+
+    -чтобы импортировать файл нужно ему указать 
+    атрибут type="module" при подключении
+    в index.js (вместо defer or async);
+
+*/
+
+import { add, substruct } from './calc.js';
+
+// console.log(add(1, 3));
 console.log(substruct(1,3));
+
+setInterval(() => {
+    console.log(add(1, 3));
+}, 1000)
+
+
 
 
 
