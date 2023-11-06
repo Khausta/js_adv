@@ -1,0 +1,38 @@
+{
+  "name": "16-build",
+  "version": "1.0.0",
+  "description": "task 16-build of purpleschool",
+  "main": "./scripts/app.js",
+  "dependencies": {
+    "asynckit": "^0.4.0",
+    "axios": "^1.6.0",
+    "combined-stream": "^1.0.8",
+    "delayed-stream": "^1.0.0",
+    "follow-redirects": "^1.15.3",
+    "form-data": "^4.0.0",
+    "mime-db": "^1.52.0",
+    "mime-types": "^2.1.35",
+    "proxy-from-env": "^1.1.0"
+  },
+  "devDependencies": {
+    "rollup": "^4.3.0"
+  },
+  "scripts": {
+    "build": "rollup app.js --format iife --file bundle.js",
+    "start": "live-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Khausta/js_adv.git"
+  },
+  "keywords": [
+    "16-build"
+  ],
+  "author": "Anna Khaustova",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Khausta/js_adv/issues"
+  },
+  "homepage": "https://github.com/Khausta/js_adv#readme"
+}
