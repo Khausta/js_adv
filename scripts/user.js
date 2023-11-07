@@ -3,4 +3,9 @@ export class User {
         this.className = className;
         this.do = () => this.className.run();
     }
+<<<<<<< HEAD
 }
+=======
+}
+
+>>>>>>> develop
