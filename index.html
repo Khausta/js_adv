@@ -5,10 +5,72 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="./style.css">
-    <script src="./app.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/timer.css">
+    <script src="./app.js"></script>
   </head>
   <body style="background-color: #1c1b21; text-align: center">
     <img src="./logo.svg" alt="" />
+    <section class="timer-2">
+      <div class="container">
+        <div class="balloon white">
+          <div class="star-red"></div>
+        <div class="face">
+          <div class="eye"></div>
+          <div class="mouth happy"></div>
+        </div>
+        <div class="triangle"></div>
+        <div class="string"></div>
+      </div>
+      <div class="balloon red">
+        <div class="star"></div>
+        <div class="face">
+          <div class="eye"></div>
+          <div class="mouth happy"></div>
+        </div>
+        <div class="triangle"></div>
+        <div class="string"></div>
+      </div>
+       
+      <div class="balloon blue">
+        <div class="star"></div>
+        <div class="face">
+          <div class="eye"></div>
+          <div class="mouth happy"></div>
+        </div>
+        <div class="triangle"></div>
+        <div class="string"></div>
+      </div>
+        <div id="timer">
+        <div class="month"> 
+          <div class="numbers">0</div>
+          <span> месяцев</span>
+        </div> 
+        <div class="days"> 
+          <div class="numbers">0</div>
+          <span>
+            дней
+          </span>
+          </div> 
+          <div class="hours"> 
+            <div class="numbers">0</div>
+            <span>часов</span>
+            </div> 
+          <div class="minutes"> 
+            <div class="numbers">0</div>
+            <span>минут</span>
+          </div> 
+          <div class="seconds"> 
+            <div class="numbers">0</div>
+            <span>секунд</span>
+          </div> 
+        </div>
+        <h1>До нового года осталось</h1>
+      </div>
+    </div>
+    </section>
+    <script src="4-timer.js"></script>
   </body>
 </html>
