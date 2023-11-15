@@ -9,13 +9,23 @@ export class Card extends DivComponent{
     }
 
     #addToFavorites() {
+        event.stopPropagation();
         this.appState.favorites.push(this.cardState);
     }
 
     #deleteFromFavorites() {
+        event.stopPropagation();
         this.appState.favorites = this.appState.favorites.filter(
             b => b.key !== this.cardState.key
         );
+    }
+
+    href(event) {        
+        if (event.target.nodeName === 'BUTTON') return false;
+        if(this.appState.selectedBook.length) this.appState.selectedBook.pop();
+     
+        this.appState.selectedBook.push(this.cardState);
+        window.location.href += '#book-description';
     }
 
     render() {
@@ -23,9 +33,13 @@ export class Card extends DivComponent{
         const existInFavorites = this.appState.favorites.find(
             b => b.key === this.cardState.key
         );
+        // console.log(this.appState, this.cardState);
+        
         this.el.innerHTML = `
+      
+
             <div class="card__image">
-                 <img src="https://covers.openlibrary.org/b/olid/${this.cardState.cover_edition_key}-M.jpg" alt="обложка" />
+                <img src="https://covers.openlibrary.org/b/olid/${this.cardState.cover_edition_key}-M.jpg" alt="обложка" />
             </div>
             <div class="card__info">
                 <div class="card__tag">
@@ -46,6 +60,8 @@ export class Card extends DivComponent{
                     </button>
                 </div>
             </div>
+
+            
         `;
         
         if(existInFavorites) {
@@ -53,6 +69,8 @@ export class Card extends DivComponent{
         } else {
             this.el.querySelector('button').addEventListener('click', this.#addToFavorites.bind(this))
         }
+
+        this.el.addEventListener('click', this.href.bind(this));
 
         return this.el;
     }
