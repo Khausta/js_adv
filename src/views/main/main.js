@@ -33,9 +33,6 @@ export class MainView extends AbstractView {
         if (path === 'favorites') {
             this.render();
         }
-        if(path === 'book-description') {
-            this.render();
-        }
     }
 
     async stateHook(path) {
@@ -43,7 +40,6 @@ export class MainView extends AbstractView {
             this.state.loading = true;
             const data = await this.loadList(this.state.searchQuery, this.state.offset, this.state.start);
             this.state.loading = false;
-            console.log(data);
             this.state.numFound = data.numFound;  
             this.state.docs = data.docs;
             this.state.list = this.state.docs.slice(this.state.start, this.state.end);
@@ -61,6 +57,7 @@ export class MainView extends AbstractView {
     }
 
     render() {
+        console.log(this.state.list);
         const main = document.createElement('div');
         main.innerHTML = `
             <h1>

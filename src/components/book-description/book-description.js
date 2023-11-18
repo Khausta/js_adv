@@ -16,7 +16,6 @@ export class BookDescriptionView extends AbstractView {
 
     destroy() {
         onChange.unsubscribe(this.appState);
-        // onChange.unsubscribe(this.state);
     }
 
     appStateHook(path) {
@@ -26,23 +25,16 @@ export class BookDescriptionView extends AbstractView {
     }
 
     render() {
-        console.log(this.cardState); //undefined 
-        console.log(this.appState); 
         const main = document.createElement('div');
         main.innerHTML = `
             <h1>
-                ${this.appState.selectedBook[0].title}
+                ${this.appState.selectedBook.title}
             </h1>
         `;
-        console.log(this.appState, this.cardState);
-        // main.innerHTML = `Число книг: ${this.appState.favorites.length}`;
-        // main.append(new Card(this.appState, { list: this.appState.selectedBook }).render());
-        console.log(this.appState.selectedBook)
         main.append(new AboutBook(this.appState, this.appState.selectedBook).render());
         this.app.innerHTML = '';
         this.app.append(main);
         this.renderHeader();
-        // this.appState.favorites.push('ddd');
     }
 
     renderHeader() {

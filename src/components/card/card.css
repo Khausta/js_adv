@@ -33,10 +33,12 @@
 
 .card__name {
     margin-bottom: 8px;
+    max-height: 48px;
     color: #FFF;
     font-size: 15px;
     font-weight: 600;
     line-height: 104%;
+    overflow-y: hidden;
 }
 
 .card__author {

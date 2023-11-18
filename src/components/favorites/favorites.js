@@ -16,11 +16,11 @@ export class FavoritesView extends AbstractView {
 
     destroy() {
         onChange.unsubscribe(this.appState);
-        // onChange.unsubscribe(this.state);
     }
 
     appStateHook(path) {
         if (path === 'favorites') {
+
             this.render();
         }
     }
@@ -32,12 +32,10 @@ export class FavoritesView extends AbstractView {
                 Избранное
             </h1>
         `;
-        // main.innerHTML = `Число книг: ${this.appState.favorites.length}`;
         main.append(new CardList(this.appState, { list: this.appState.favorites }).render());
         this.app.innerHTML = '';
         this.app.append(main);
         this.renderHeader();
-        // this.appState.favorites.push('ddd');
     }
 
     renderHeader() {

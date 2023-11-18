@@ -1,4 +1,5 @@
 import { DivComponent } from "../../common/div-component";
+// import onChange from "on-change";s
 import './about-book.css'
 
 
@@ -11,8 +12,7 @@ export class AboutBook extends DivComponent {
     }
 
     #addToFavorites() {
-        this.appState.favorites.push(this.bookState);
-        
+        this.appState.favorites.push(this.bookState); 
     }
 
     #deleteFromFavorites() {
@@ -26,26 +26,25 @@ export class AboutBook extends DivComponent {
         const existInFavorites = this.appState.favorites.find(
             b => b.key === this.bookState.key
         );
-        // console.log(this.appState, this.cardState);
         
         this.el.innerHTML = `
             
             <div class="book__info">
                 <div class="book__image">
-                    <img src="https://covers.openlibrary.org/b/olid/${this.appState.selectedBook[0].cover_edition_key}-M.jpg" alt="обложка" />
+                    <img src="https://covers.openlibrary.org/b/olid/${this.bookState.cover_edition_key}-M.jpg" alt="обложка" />
                 </div>
                 <div class="book__characters">
                     <div class="book__author">
-                    Author: <span>${this.appState.selectedBook[0].author_name ? this.appState.selectedBook[0].author_name[0] : 'Not found'}</span>
+                    Author: <span>${this.bookState.author_name ? this.bookState.author_name[0] : 'Not found'}</span>
                     </div>
                     <div class="book__category">
-                        Category: <span>${this.appState.selectedBook[0].subject ? this.appState.selectedBook[0].subject[0] : 'Not found'}</span>
+                        Category: <span>${this.bookState.subject ? this.bookState.subject[0] : 'Not found'}</span>
                     </div>
                     <div class="book__first-publication">
-                        First publication: <span>${this.appState.selectedBook[0].publish_year[0] ? this.appState.selectedBook[0].publish_year[0] : 'Not found'}</span>
+                        First publication: <span>${this.bookState.publish_year ? this.bookState.publish_year[0] : 'Not found'}</span>
                     </div>
                     <div class="book__pages">
-                        Number of pages: <span>${this.appState.selectedBook[0].number_of_pages_median ? this.appState.selectedBook[0].number_of_pages_median : 'Not found'}</span>
+                        Number of pages: <span>${this.bookState.number_of_pages_median ? this.bookState.number_of_pages_median : 'Not found'}</span>
                     </div>
                     <button class="button_add-book ${existInFavorites ? 'button_active-book' : ''}">
                         ${existInFavorites
@@ -66,15 +65,12 @@ export class AboutBook extends DivComponent {
         `;
 
         const tagsBlock = this.el.querySelector('.book__tags');
-        const tags = this.appState.selectedBook[0].subject;
+        const tags = this.bookState.subject;
         if(tags) {
-
             for (const tag of tags) {
                 const el = document.createElement('span');
                 el.innerHTML = tag;
-                tagsBlock.append(el);
-                console.log(tag);
-    
+                tagsBlock.append(el);    
             }
         }
         

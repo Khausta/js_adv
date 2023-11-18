@@ -8,24 +8,28 @@ export class Card extends DivComponent{
         this.cardState = cardState; 
     }
 
-    #addToFavorites() {
+    #addToFavorites(event) {
         event.stopPropagation();
         this.appState.favorites.push(this.cardState);
+        console.log(this.cardState);
+        localStorage.setItem(this.cardState.key.replace('/works/', ''), JSON.stringify(this.cardState));
+        console.log(localStorage);
+        console.log(this.appState.favorites)
     }
 
-    #deleteFromFavorites() {
+    #deleteFromFavorites(event) {
         event.stopPropagation();
         this.appState.favorites = this.appState.favorites.filter(
             b => b.key !== this.cardState.key
         );
+        localStorage.removeItem(this.cardState.key);
     }
 
     href(event) {        
         if (event.target.nodeName === 'BUTTON') return false;
         if(this.appState.selectedBook.length) this.appState.selectedBook.pop();
-     
-        this.appState.selectedBook.push(this.cardState);
-        window.location.href += '#book-description';
+        this.appState.selectedBook = this.cardState;
+        window.location.href = '#book-description';
     }
 
     render() {
@@ -33,11 +37,8 @@ export class Card extends DivComponent{
         const existInFavorites = this.appState.favorites.find(
             b => b.key === this.cardState.key
         );
-        // console.log(this.appState, this.cardState);
         
         this.el.innerHTML = `
-      
-
             <div class="card__image">
                 <img src="https://covers.openlibrary.org/b/olid/${this.cardState.cover_edition_key}-M.jpg" alt="обложка" />
             </div>
@@ -63,13 +64,13 @@ export class Card extends DivComponent{
 
             
         `;
-        
+        //add, remove button
         if(existInFavorites) {
             this.el.querySelector('button').addEventListener('click', this.#deleteFromFavorites.bind(this))
         } else {
             this.el.querySelector('button').addEventListener('click', this.#addToFavorites.bind(this))
         }
-
+        //link to book details
         this.el.addEventListener('click', this.href.bind(this));
 
         return this.el;

@@ -14,7 +14,10 @@ class App {
         selectedBook: []
     }
     constructor() {
-        window.addEventListener('hashchange', this.route.bind(this))
+        window.addEventListener('hashchange', this.route.bind(this));
+        for (const key of Object.keys(localStorage)) {
+            this.appState.favorites.push(JSON.parse(localStorage.getItem(key)))
+        }
         this.route();
     }
 
