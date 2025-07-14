@@ -13,6 +13,7 @@ export class Pagination extends DivComponent{
         let end = this.state.end;
         const start = end;
         end = start + 9;
+       
 
         if (start > 99) {
             const newOffset = this.state.offset + 100;
@@ -34,6 +35,8 @@ export class Pagination extends DivComponent{
             this.state.start = start;
         }
         this.state.list = this.state.docs.slice(this.state.start, this.state.end);
+        sessionStorage.setItem('lastSearch', JSON.stringify(this.state));
+        console.log(this.state);
 
         // console.log(this.state.list, this.state.start, this.state.end);
     }
@@ -67,10 +70,13 @@ export class Pagination extends DivComponent{
             this.state.end = this.state.docs.length - 1;
         }
         this.state.list = this.state.docs.slice(this.state.start, this.state.end);
+        sessionStorage.setItem('lastSearch', JSON.stringify(this.state));
+        console.log(this.state);
       
     }
 
     render() {
+       
         if (!this.state.list.length) {
             return '';
         }
@@ -88,7 +94,7 @@ export class Pagination extends DivComponent{
         `;
         this.el.querySelectorAll('button')[0].addEventListener('click', this.#prev.bind(this))
         this.el.querySelectorAll('button')[1].addEventListener('click', this.#next.bind(this))
-        
+         sessionStorage.setItem('lastSearch', JSON.stringify(this.state));
         return this.el;
     }
 }

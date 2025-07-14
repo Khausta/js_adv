@@ -11,10 +11,7 @@ export class Card extends DivComponent{
     #addToFavorites(event) {
         event.stopPropagation();
         this.appState.favorites.push(this.cardState);
-        console.log(this.cardState);
         localStorage.setItem(this.cardState.key.replace('/works/', ''), JSON.stringify(this.cardState));
-        console.log(localStorage);
-        console.log(this.appState.favorites)
     }
 
     #deleteFromFavorites(event) {
@@ -25,7 +22,7 @@ export class Card extends DivComponent{
         localStorage.removeItem(this.cardState.key);
     }
 
-    href(event) {        
+    href(event) {     
         if (event.target.nodeName === 'BUTTON') return false;
         if(this.appState.selectedBook.length) this.appState.selectedBook.pop();
         this.appState.selectedBook = this.cardState;
@@ -64,13 +61,13 @@ export class Card extends DivComponent{
 
             
         `;
-        //add, remove button
+        //   add/remove button
         if(existInFavorites) {
             this.el.querySelector('button').addEventListener('click', this.#deleteFromFavorites.bind(this))
         } else {
             this.el.querySelector('button').addEventListener('click', this.#addToFavorites.bind(this))
         }
-        //link to book details
+        //   link to book details
         this.el.addEventListener('click', this.href.bind(this));
 
         return this.el;

@@ -57,7 +57,7 @@ export class AboutBook extends DivComponent {
             </div>
             <p>Description:</p>
             <div class="book__description">
-                Text of descriptin
+                Text of description
             </div>
             <p>Tags:</p> 
             <div class="book__tags">

@@ -6,7 +6,7 @@ import { CardList } from "../../components/card-list/card-list.js";
 import { Pagination } from "../../components/pagination/pagination.js";
 
 export class MainView extends AbstractView {
-    state = {
+    state = sessionStorage.getItem('lastSearch') != undefined ?  JSON.parse(sessionStorage.getItem('lastSearch')) : {
         list: [],
         numFound: 0,
         loading: false, 
@@ -16,6 +16,7 @@ export class MainView extends AbstractView {
         start: 0,
         end: 9
     };
+
     constructor(appState) {
         super();
         this.appState = appState;
@@ -43,10 +44,12 @@ export class MainView extends AbstractView {
             this.state.numFound = data.numFound;  
             this.state.docs = data.docs;
             this.state.list = this.state.docs.slice(this.state.start, this.state.end);
+            console.log(this.state);
+            
+            
         }
 
         if (path === 'list' || path === 'loading' || path === 'start' ) {
-            console.log(this.state.start, this.state.end);
             this.render();
         }
     }
@@ -57,20 +60,22 @@ export class MainView extends AbstractView {
     }
 
     render() {
-        console.log(this.state.list);
+        console.log('before render')
+        console.log(sessionStorage.length)
+
         const main = document.createElement('div');
         main.innerHTML = `
             <h1>
                 Найдено книг - ${this.state.numFound}
             </h1>
         `;
-        // main.innerHTML = `Число книг: ${this.appState.favorites.length}`;
         main.append(new Search(this.state).render());
         main.append(new CardList(this.appState, this.state).render());
         main.append(new Pagination(this.state).render());
         this.app.innerHTML = '';
         this.app.append(main);
         this.renderHeader();
+
     }
 
     renderHeader() {
